@@ -1,0 +1,36 @@
+@use "mixin" as m;
+
+.wrapper {
+	height: calc(100vh - 65px); //65px - header height
+	width: 100vw;
+	display: flex;
+	justify-content: center;
+	align-items: center;
+	background-image: url("../public/bg-image.png");
+	background-repeat: no-repeat;
+	background-position: center;
+
+	color: #1d252c;
+
+	.card {
+		background: rgba(247, 248, 250, 0.6);
+		backdrop-filter: blur(1.5em);
+		border-radius: 4px;
+		padding: 3rem 6rem;
+		text-align: center;
+
+		.title {
+			font-weight: 500;
+			font-size: 2.5em;
+			line-height: 58px;
+		}
+		.desc {
+			margin: 1rem 0 3rem;
+			font-size: 1.1em;
+		}
+
+		.button {
+			@include m.button;
+		}
+	}
+}
