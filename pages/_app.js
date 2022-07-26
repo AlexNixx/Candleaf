@@ -1,7 +1,7 @@
 import Layout from "../component/Layout";
 import Head from "next/head";
 import { Provider, createClient } from "urql";
-import "../styles/globals.css";
+import "../styles/globals.scss";
 
 const client = createClient({ url: "http://localhost:1337/graphql" });
 

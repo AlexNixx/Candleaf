@@ -16,7 +16,7 @@
 		background: rgba(247, 248, 250, 0.6);
 		backdrop-filter: blur(1.5em);
 		border-radius: 4px;
-		padding: 3rem 6rem;
+		padding: 4rem 6rem;
 		text-align: center;
 
 		.title {
@@ -27,6 +27,7 @@
 		.desc {
 			margin: 1rem 0 3rem;
 			font-size: 1.1em;
+			line-height: 26px;
 		}
 
 		.button {
