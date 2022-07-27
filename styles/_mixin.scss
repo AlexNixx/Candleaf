@@ -1,5 +1,6 @@
-@mixin button {
-	padding: 0.7rem 3rem;
+@mixin button($padding) {
+	// padding: 0.7rem 3rem;
+	padding: $padding;
 	border-radius: 4px;
 	background: #56b280;
 	color: #ffffff;

@@ -1,0 +1,50 @@
+@use "mixin" as m;
+
+.wrapper {
+	display: flex;
+	flex-direction: row;
+	justify-content: space-between;
+	align-items: center;
+	background-color: #f7f8fa;
+	padding: 10rem 10%;
+	height: 100%;
+	width: 100%;
+
+	.left {
+		.title {
+			font-size: 2.5em;
+			font-weight: 500;
+			color: #1d252c;
+			margin: 0 0 0.5em 0;
+		}
+		.desc {
+			color: #56b280;
+			font-size: 1.2em;
+		}
+		.list {
+			margin: 3em 0;
+			list-style-type: none;
+			li {
+				// list-style-image: url("../public/checkmark.svg");
+				// padding-inline-start: 0.5em;
+				// margin: 1em 0;
+				background-image: url("../public/checkmark.svg");
+				background-repeat: no-repeat;
+				padding-left: 2em;
+				margin: 1em 0;
+				span {
+					font-weight: 600;
+				}
+			}
+		}
+
+		.button {
+			@include m.button(0.35rem 2.5rem);
+			font-weight: 400;
+		}
+	}
+
+	.image {
+		border-radius: 4px;
+	}
+}
