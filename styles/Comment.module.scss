@@ -1,0 +1,73 @@
+.wrapper {
+	display: flex;
+	justify-content: center;
+	align-items: center;
+	flex-direction: column;
+	height: 100%;
+	width: 100%;
+	padding: 5rem 10%;
+	background-color: rgba(86, 178, 128, 0.1);
+
+	.title {
+		font-size: 2.5em;
+		font-weight: 500;
+		color: #0b254b;
+	}
+
+	.desc {
+		font-size: 1.3em;
+		color: #5e6e89;
+		margin: 1.2em 0;
+	}
+
+	.card_container {
+		display: flex;
+		justify-content: center;
+		align-items: center;
+		flex-wrap: wrap;
+		height: 100%;
+		width: 100%;
+		margin: 2em 0;
+
+		.card {
+			display: flex;
+			flex-direction: column;
+			align-items: center;
+			height: 100%;
+			width: 100%;
+			flex: 0 0 300px;
+			padding: 2em;
+			margin: 1.5em;
+			background-color: #fff;
+			.photo {
+				border-radius: 50%;
+			}
+			.comment_text {
+				font-size: 1.2em;
+				font-weight: 500;
+				margin: 2em 0 1em;
+				text-align: center;
+			}
+			.author {
+				color: #7c8087;
+			}
+		}
+	}
+}
+
+.star_rating {
+	height: 100%;
+	width: 100%;
+	margin: 1em 0 0;
+	text-align: center;
+	span {
+		margin: 0 0.15em;
+		font-size: 1.3em;
+	}
+	.star_on {
+		color: #56b280;
+	}
+	.star_off {
+		color: rgba(212, 212, 212, 0.456);
+	}
+}
