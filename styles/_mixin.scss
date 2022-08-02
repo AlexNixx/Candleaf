@@ -1,5 +1,4 @@
 @mixin button($padding) {
-	// padding: 0.7rem 3rem;
 	padding: $padding;
 	border-radius: 4px;
 	background: #56b280;
@@ -8,4 +7,24 @@
 	text-align: center;
 	font-weight: 500;
 	font-size: 1.25em;
+}
+
+@mixin qty_container {
+	border: 1px solid #56b280;
+	display: flex;
+	flex-direction: row;
+	justify-content: center;
+	align-items: center;
+	button {
+		background-color: #fff;
+		color: #56b280;
+		font-size: 1.5em;
+		padding: 0 0.25em 0.1em;
+	}
+	span {
+		height: 100%;
+		width: 1.5em;
+		text-align: center;
+		margin: 0 0.5em;
+	}
 }

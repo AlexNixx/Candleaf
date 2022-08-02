@@ -31,7 +31,7 @@
 		}
 
 		.button {
-			@include m.button;
+			@include m.button(0.7rem 3rem);
 		}
 	}
 }
