@@ -1,0 +1,106 @@
+@use "mixin" as m;
+
+.wrapper {
+	display: flex;
+	justify-content: space-between;
+	flex-wrap: wrap;
+	padding: 5em 10%;
+}
+
+.left {
+	display: flex;
+	flex-direction: column;
+	align-items: center;
+	height: 100%;
+	width: 50%;
+	// background-color: red;
+	.image_container {
+		height: 100%;
+		width: 100%;
+		padding: 5em;
+		background-color: #f7f8fa;
+		text-align: center;
+	}
+	p {
+		font-weight: 400;
+		font-size: 1.25em;
+		width: 70%;
+		margin: 1.3em 0 1.8em;
+		text-align: center;
+	}
+	span {
+		color: #56b280;
+		font-weight: 600;
+	}
+}
+
+.right {
+	display: flex;
+	flex-direction: column;
+	height: 100%;
+	width: 50%;
+	padding-left: 3em;
+
+	.title {
+		font-size: 2em;
+		font-weight: 500;
+	}
+	.price {
+		font-size: 1.5em;
+		font-weight: 500;
+		color: #56b280;
+		margin: 1.5em 0;
+	}
+	.qty_title {
+		font-size: 1.25em;
+		font-weight: 500;
+	}
+
+	.user_action {
+		margin: 1em 0;
+		display: flex;
+		flex-direction: row;
+		justify-content: space-between;
+		align-items: center;
+		height: 100%;
+		width: 100%;
+
+		.qty_container {
+			@include m.qty_container;
+		}
+
+		.button {
+			@include m.button(0.35rem 4.5rem);
+			display: flex;
+			justify-content: center;
+			align-items: center;
+
+			height: 100%;
+			svg {
+				font-size: 1.5em;
+			}
+		}
+
+		.button_disable {
+			background: #ffffff;
+			color: #56b280;
+			border: 1px solid #56b280;
+			cursor: auto;
+		}
+	}
+
+	.product_info {
+		border: 1px solid #e6e6e6;
+		border-radius: 4px;
+		padding: 2em;
+		margin: 2em 0;
+
+		p {
+			line-height: 2em;
+			color: #56b280;
+			span {
+				color: black;
+			}
+		}
+	}
+}
