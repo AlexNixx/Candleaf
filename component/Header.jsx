@@ -5,9 +5,11 @@ import { FiShoppingBag } from "react-icons/fi";
 import styles from "../styles/Header.module.scss";
 import logo from "../public/header-logo.svg";
 import { useEffect, useState } from "react";
+import { useStateContext } from "../lib/context";
 
 const Header = () => {
 	const [headerScroll, setHeaderScroll] = useState(false);
+	const { totalQty } = useStateContext();
 
 	useEffect(() => {
 		const handleScroll = () => {
@@ -49,10 +51,12 @@ const Header = () => {
 			</nav>
 			<div className={styles.user_action}>
 				<FaUserCircle />
-				<div className={styles.basket}>
-					<FiShoppingBag />
-					<span>2</span>
-				</div>
+				<Link href="/cart">
+					<div className={styles.basket}>
+						<FiShoppingBag />
+						{totalQty > 0 && <span>{totalQty}</span>}
+					</div>
+				</Link>
 			</div>
 		</header>
 	);
