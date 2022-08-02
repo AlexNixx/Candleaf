@@ -1,6 +1,7 @@
 import Layout from "../component/Layout";
 import Head from "next/head";
 import { Provider, createClient } from "urql";
+import { StateContext } from "../lib/context";
 import "../styles/globals.scss";
 
 const client = createClient({ url: "http://localhost:1337/graphql" });
@@ -11,11 +12,13 @@ function MyApp({ Component, pageProps }) {
 			<Head>
 				<title>Candleaf Shop</title>
 			</Head>
-			<Provider value={client}>
-				<Layout>
-					<Component {...pageProps} />
-				</Layout>
-			</Provider>
+			<StateContext>
+				<Provider value={client}>
+					<Layout>
+						<Component {...pageProps} />
+					</Layout>
+				</Provider>
+			</StateContext>
 		</>
 	);
 }
