@@ -2,11 +2,28 @@ import Link from "next/link";
 import Image from "next/image";
 import styles from "../styles/Cart.module.scss";
 import { useStateContext } from "../lib/context";
+import getStripe from "../lib/getStripe";
 
 const Cart = () => {
 	const { cartItems, onAdd, onRemove, totalPrice } = useStateContext();
 
-	console.log(cartItems);
+	//payment
+	const handleCheckout = async () => {
+		const stripePromise = await getStripe();
+		const response = await fetch("/api/stripe", {
+			method: "POST",
+			headers: {
+				"Content-Type": "application/json",
+			},
+			body: JSON.stringify(cartItems),
+		});
+		try {
+			const data = await response.json();
+			await stripePromise.redirectToCheckout({ sessionId: data.id });
+		} catch (error) {
+			console.log(error);
+		}
+	};
 
 	return (
 		<div className={styles.wrapper}>
@@ -72,7 +89,12 @@ const Cart = () => {
 								Tax and shipping cost will be calculated later
 							</p>
 						</div>
-						<button className={styles.button_check_out}>Check-out</button>
+						<button
+							className={styles.button_check_out}
+							onClick={handleCheckout}
+						>
+							Check-out
+						</button>
 					</div>
 				</div>
 			) : (
