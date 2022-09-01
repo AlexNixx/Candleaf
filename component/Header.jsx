@@ -1,11 +1,11 @@
 import Image from "next/image";
 import Link from "next/link";
-import { FaUserCircle } from "react-icons/fa";
 import { FiShoppingBag } from "react-icons/fi";
 import styles from "../styles/Header.module.scss";
 import logo from "../public/header-logo.svg";
 import { useEffect, useState } from "react";
 import { useStateContext } from "../lib/context";
+import User from "./User";
 
 const Header = () => {
 	const [headerScroll, setHeaderScroll] = useState(false);
@@ -50,7 +50,7 @@ const Header = () => {
 				</ul>
 			</nav>
 			<div className={styles.user_action}>
-				<FaUserCircle />
+				<User />
 				<Link href="/cart">
 					<div className={styles.basket}>
 						<FiShoppingBag />
