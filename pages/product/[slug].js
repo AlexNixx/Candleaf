@@ -6,11 +6,13 @@ import styles from "../../styles/ProductDetails.module.scss";
 import { useEffect, useState } from "react";
 import { AiOutlineShoppingCart } from "react-icons/ai";
 import { useStateContext } from "../../lib/context";
+import toast from "react-hot-toast";
 
 const ProductDetails = () => {
 	//Use state
 	const { qty, setQty, increaseQty, decreaseQty, onAdd } = useStateContext();
 
+	//Reset qty
 	useEffect(() => {
 		setQty(1);
 	}, []);
@@ -30,6 +32,11 @@ const ProductDetails = () => {
 
 	const { title, image, price, description, inStock } =
 		data.products.data[0].attributes;
+
+	//Create a toast
+	const notify = () => {
+		toast.success(`${title} added to your cart`, { duration: 1000 });
+	};
 
 	return (
 		<div className={styles.wrapper}>
@@ -67,9 +74,10 @@ const ProductDetails = () => {
 						onClick={() => {
 							onAdd(data.products.data[0].attributes, qty);
 							setQty(1);
+							notify();
 						}}
 					>
-						<AiOutlineShoppingCart />+ Add to cart
+						<AiOutlineShoppingCart /> + Add to cart
 					</button>
 				</div>
 
