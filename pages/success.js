@@ -2,6 +2,7 @@ import { useRouter } from "next/router";
 const stripe = require("stripe")(
 	`${process.env.NEXT_PUBLIC_STRIPE_SECRET_KEY}`
 );
+import formatMoney from "../lib/formatMoney";
 
 const Success = ({ order }) => {
 	const route = useRouter();
@@ -29,7 +30,7 @@ const Success = ({ order }) => {
 						<div key={item.id}>
 							<h3>Product: {item.description}</h3>
 							<span>Quantity: {item.quantity}</span>
-							<span>Price: {item.price.unit_amount / 100}</span>
+							<span>Price: {formatMoney(item.price.unit_amount)}</span>
 						</div>
 					))}
 				</div>
