@@ -5,6 +5,15 @@ const nextConfig = {
 	images: {
 		domains: ["res.cloudinary.com"],
 	},
+	async redirects() {
+		return [
+			{
+				source: "/canceled",
+				destination: "/",
+				permanent: true,
+			},
+		];
+	},
 };
 
 module.exports = nextConfig;
