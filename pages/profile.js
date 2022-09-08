@@ -3,28 +3,40 @@ import { getSession, withPageAuthRequired } from "@auth0/nextjs-auth0";
 const stripe = require("stripe")(
 	`${process.env.NEXT_PUBLIC_STRIPE_SECRET_KEY}`
 );
-
 import formatDate from "../lib/formatData";
 import formatMoney from "../lib/formatMoney";
+import styles from "../styles/Profile.module.scss";
 
 const profile = ({ user, orders }) => {
 	const route = useRouter();
-	console.log(orders);
+
 	return (
 		user && (
-			<div>
-				<h2>{user.name}</h2>
-				<p>{user.email}</p>
-				<div>
+			<div className={styles.wrapper}>
+				<h2 className={styles.user_name}>{user.name}</h2>
+				<h4 className={styles.user_mail}>{user.email}</h4>
+				<span className={styles.oders_title}>Orders: </span>
+				<div className={styles.orders}>
 					{orders.map((order) => (
-						<div>
-							<h1>Order Name: {order.id}</h1>
-							<h2>{formatMoney(order.amount)}</h2>
-							<h2>Data: {formatDate(order.created)}</h2>
+						<div className={styles.order}>
+							<h2 className={styles.order_date}>
+								Data: {formatDate(order.created)}
+							</h2>
+							<h2 className={styles.order_name}>
+								Order number: <span>{order.id}</span>
+							</h2>
+							<h2 className={styles.order_amount}>
+								Order amount: {formatMoney(order.amount)}
+							</h2>
 						</div>
 					))}
 				</div>
-				<button onClick={() => route.push("/api/auth/logout")}>Logout</button>
+				<button
+					onClick={() => route.push("/api/auth/logout")}
+					className={styles.button}
+				>
+					Logout
+				</button>
 			</div>
 		)
 	);

@@ -1,0 +1,54 @@
+@use "mixin" as m;
+
+.wrapper {
+	width: 100vw;
+	height: 100%;
+	padding: 3em 10%;
+	display: flex;
+	flex-direction: column;
+	justify-content: center;
+	align-items: center;
+
+	.user_name {
+		font-size: 2em;
+	}
+	.user_mail {
+		font-size: 1.2em;
+		color: #56b280;
+		margin: 1.3em 0;
+	}
+	.oders_title {
+		margin: 2em 0 1em;
+		font-size: 1.35em;
+	}
+
+	.button {
+		@include m.button(0.5em 3em);
+		font-size: 1.15em;
+	}
+}
+
+.orders {
+	display: flex;
+	flex-direction: column;
+	width: 100%;
+	height: 100%;
+	margin: 0 0 2em;
+	.order {
+		display: flex;
+		justify-content: space-between;
+		align-items: center;
+		text-align: center;
+		margin: 0.6em 0;
+		padding: 1.25em;
+		background-color: #fff;
+		filter: drop-shadow(0px 4px 24px rgba(123, 123, 123, 0.15));
+		border-radius: 4px;
+		.order_name {
+			span {
+				color: #56b280;
+				font-weight: 600;
+			}
+		}
+	}
+}
