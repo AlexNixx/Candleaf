@@ -15,22 +15,32 @@ const profile = ({ user, orders }) => {
 			<div className={styles.wrapper}>
 				<h2 className={styles.user_name}>{user.name}</h2>
 				<h4 className={styles.user_mail}>{user.email}</h4>
-				<span className={styles.oders_title}>Orders: </span>
-				<div className={styles.orders}>
-					{orders.map((order) => (
-						<div className={styles.order}>
-							<h2 className={styles.order_date}>
-								Data: {formatDate(order.created)}
-							</h2>
-							<h2 className={styles.order_name}>
-								Order number: <span>{order.id}</span>
-							</h2>
-							<h2 className={styles.order_amount}>
-								Order amount: {formatMoney(order.amount)}
-							</h2>
+				{!orders.length && (
+					<h2 className={styles.order_toggle}>
+						You don't have order history yet
+					</h2>
+				)}
+				{orders.length > 0 && (
+					<>
+						<span className={styles.oders_title}>Orders: </span>
+						<div className={styles.orders}>
+							{orders.map((order) => (
+								<div className={styles.order}>
+									<h2 className={styles.order_date}>
+										Data: {formatDate(order.created)}
+									</h2>
+									<h2 className={styles.order_name}>
+										Order number: <span>{order.id}</span>
+									</h2>
+									<h2 className={styles.order_amount}>
+										Order amount: {formatMoney(order.amount)}
+									</h2>
+								</div>
+							))}
 						</div>
-					))}
-				</div>
+					</>
+				)}
+
 				<button
 					onClick={() => route.push("/api/auth/logout")}
 					className={styles.button}
