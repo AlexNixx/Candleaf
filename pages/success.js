@@ -3,38 +3,42 @@ const stripe = require("stripe")(
 	`${process.env.NEXT_PUBLIC_STRIPE_SECRET_KEY}`
 );
 import formatMoney from "../lib/formatMoney";
+import styles from "../styles/Success.module.scss";
 
 const Success = ({ order }) => {
 	const route = useRouter();
-	console.log(order);
+
 	return (
-		<div>
-			<div>
+		<div className={styles.wrapper}>
+			<div className={styles.order_info}>
 				<h1>Thank you for your order!</h1>
 				<h2>A confirmation email has been sent to</h2>
-				<h2>{order.customer_details.email}</h2>
-				<div>
-					<h2>address</h2>
-					{/* <h3>addres info</h3> */}
+				<h2>
+					<span>{order.customer_details.email}</span>
+				</h2>
+				<div className={styles.shipping_address}>
+					<h2>Address</h2>
 					{Object.entries(order.customer_details.address).map(
 						([key, value]) => (
-							<p key={key}>
-								{key} : {value}
+							<p key={key} className={styles.address_line}>
+								{key} : <span>{value}</span>
 							</p>
 						)
 					)}
 				</div>
-				<div>
-					<h2>product</h2>
+				<div className={styles.product_list}>
+					<h2>Products</h2>
 					{order.line_items.data.map((item) => (
-						<div key={item.id}>
+						<div key={item.id} className={styles.order_product}>
 							<h3>Product: {item.description}</h3>
 							<span>Quantity: {item.quantity}</span>
 							<span>Price: {formatMoney(item.price.unit_amount)}</span>
 						</div>
 					))}
 				</div>
-				<button onClick={() => route.push("/")}>Continue Shopping</button>
+				<button className={styles.button} onClick={() => route.push("/")}>
+					Continue Shopping
+				</button>
 			</div>
 		</div>
 	);
